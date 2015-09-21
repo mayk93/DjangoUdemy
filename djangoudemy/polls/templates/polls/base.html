@@ -1,13 +1,17 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html>
  <head>
   <meta charset="UTF-8">
   <title>Django Tutorial</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}"/>
  </head>
  <body>
    {% include "polls/header.html" %}
    {% block mainContent %}
    {% endblock %}
    {% include "polls/footer.html" %}
+   <p class="image">Here be image.</p>
  </body>
 </html>
