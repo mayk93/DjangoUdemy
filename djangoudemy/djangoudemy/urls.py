@@ -18,5 +18,5 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^polls/', include('polls.urls')), # Any url that starts with 'polls' should be mapped to the polls application urls
+    url(r'^polls/', include('polls.urls' , namespace = 'polls')), # Any url that starts with 'polls' should be mapped to the polls application urls
 ]

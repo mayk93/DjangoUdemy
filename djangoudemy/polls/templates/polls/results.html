@@ -1,0 +1,14 @@
+{% extends "polls/base.html" %}
+
+{% block mainContent %}
+
+<h1>{{question.questionText}}</h1>
+<ul>
+  {% for answer in question.answer_set.all %}
+    <li>{{answer.answerText}} has {{answer.votes}} vote{{answer.votes|pluralize}}</li>
+  {% endfor %}
+</ul>
+
+<a href="{% url 'polls:detail' question.id %}"> Back to votes. </a>
+
+{% endblock %}

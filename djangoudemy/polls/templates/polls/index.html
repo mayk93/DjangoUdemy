@@ -1,10 +1,15 @@
+<!-- We can refere to views by the name given to them -->
+<!-- We no longer need hardcoded urls -->
+<!-- url 'poll:detail' is the url of the detail view -->
+<!-- We say polls: because detail is part of the polls namespace. See djangoudemy/url.py -->
+
 {% extends "polls/base.html" %}
 
 {% block mainContent %}
 {% if latestsQuestionsList %}
   <ul>
     {% for question in latestsQuestionsList %}
-      <li> <a href="/polls/{{question.id}}/">{{question.questionText}}</a> </li>
+      <li> <a href="{% url 'polls:detail' question.id %}">{{question.questionText}}</a> </li>
     {% endfor %}
   </ul>
 {% else %}
