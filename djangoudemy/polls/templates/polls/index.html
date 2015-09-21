@@ -1,0 +1,10 @@
+
+{% if latestsQuestionsList %}
+  <ul>
+    {% for question in latestsQuestionsList %}
+      <li> <a href="/polls/{{question.id}}/">{{question.questionText}}</a> </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No questions uploaded.</p>
+{% endif %}
