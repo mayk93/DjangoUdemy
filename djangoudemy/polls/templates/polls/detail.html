@@ -1,0 +1,10 @@
+{% extends "polls/base.html" %}
+
+{% block mainContent %}
+<h1>{{question.questionText}}</h1>
+<ul>
+  {% for answer in question.answer_set.all %}
+    <li>{{answer.answerText}}</li>
+  {% endfor %}
+</ul>
+{% endblock %}

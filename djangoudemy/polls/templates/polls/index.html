@@ -1,4 +1,6 @@
+{% extends "polls/base.html" %}
 
+{% block mainContent %}
 {% if latestsQuestionsList %}
   <ul>
     {% for question in latestsQuestionsList %}
@@ -8,3 +10,4 @@
 {% else %}
   <p>No questions uploaded.</p>
 {% endif %}
+{% endblock %}
