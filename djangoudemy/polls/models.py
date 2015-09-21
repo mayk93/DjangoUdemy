@@ -10,14 +10,17 @@ class Question(models.Model):
     publishDate = models.DateTimeField('date published')
 
     def lastSevenDays(self):
-        return (self.publishDate >= timezone.now() - datetime.timedelta(days=7))
+        return (self.publishDate >= timezone.now() - datetime.timedelta(days=7)) and (self.publishDate <= timezone.now())
+
+    def lastDay(self):
+        return (self.publishDate >= timezone.now() - datetime.timedelta(days=1)) and (self.publishDate <= timezone.now())
 
     def __str__(self):
         return self.questionText
 
     lastSevenDays.admin_order_field = publishDate
     lastSevenDays.boolean = True
-    lastSevenDays.short_description = 'Last week?'    
+    lastSevenDays.short_description = 'Last week?'
 
 class Answer(models.Model):
     answerText = models.CharField(max_length = 100)

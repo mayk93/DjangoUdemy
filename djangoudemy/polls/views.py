@@ -21,6 +21,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import Http404, HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.views import generic
+from django.utils import timezone
 from polls.models import Question, Answer
 
 ''' Old 2 Index (Old 2 is different from old) '''
@@ -39,7 +40,8 @@ class IndexView(generic.ListView):
     context_object_name = 'latestsQuestionsList'
 
     def get_queryset(self):
-        return Question.objects.order_by('-publishDate')[:5]
+        #lte stands for less then or equal.
+        return Question.objects.filter(publishDate__lte=timezone.now()).order_by('-publishDate')[:5]
 
 ''' Old 2 Detail - See Old 2 above index '''
 '''
@@ -60,6 +62,8 @@ def detail(request,questionID):
 class DetailView(generic.DetailView):
     template_name = 'polls/detail.html'
     model = Question
+    def get_queryset(self):
+        return Question.objects.filter(publishDate__lte=timezone.now())
 
 ''' Old 2 results '''
 '''
@@ -72,6 +76,9 @@ def results(request,questionID):
 class ResultsView(generic.DetailView):
     template_name = 'polls/results.html'
     model = Question
+
+    def get_queryset(self):
+        return Question.objects.filter(publishDate__lte=timezone.now())
 
 def vote(request,questionID):
     question = get_object_or_404(Question,pk=questionID)
