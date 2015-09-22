@@ -1,7 +1,7 @@
 {% extends "polls/base.html" %}
 
 {% block mainContent %}
-<h1>{{question.questionText}}</h1>
+<br><h1>{{question.questionText}}</h1><br>
 
 {% if error_message %}
   <p><strong>{{error_message}}</strong></p>
@@ -15,6 +15,11 @@
     <label for="answer{{forloop.counter}}"> {{answer.answerText}} </label><br>
   {% endfor %}
 </ul>
-<input type="submit" value="Vote" />
+<input type="submit" class="btn btn-success" value="Vote" />
 </form>
+
+<br>
+<a href="{% url 'polls:index' %}">Back to Question List.</a>
+<br>
+
 {% endblock %}

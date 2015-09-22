@@ -2,7 +2,8 @@
 
 {% block mainContent %}
 
-<h1>{{question.questionText}}</h1>
+<br><h1>{{question.questionText}}</h1><br>
+
 <ul>
   {% for answer in question.answer_set.all %}
     <li>{{answer.answerText}} has {{answer.votes}} vote{{answer.votes|pluralize}}</li>
